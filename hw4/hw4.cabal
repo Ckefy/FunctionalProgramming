@@ -1,0 +1,105 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.33.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 03ea10dcbb615c0fc221772f6d8a26f8cf3a7a56d0647e26c0815113bf300ed8
+
+name:           hw4
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/Github username here/hw4#readme>
+homepage:       https://github.com/Github username here/hw4#readme
+bug-reports:    https://github.com/Github username here/hw4/issues
+author:         Author name here
+maintainer:     Author email here
+copyright:      2019 Author name here
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/Github username here/hw4
+
+library
+  exposed-modules:
+      Lib
+    , GeometryParallel
+    , GeometryNaive
+    , HashTable
+    , Commonad19
+    , Integrate
+    , FSLenses
+  other-modules:
+      Paths_hw4
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+    , deepseq
+    , vector
+    , stm
+    , hashable
+    , random
+    , threads
+    , microlens
+    , filepath
+    , directory
+    , comonad
+    , process
+    , ansi-terminal
+    , monad-par
+    , monad-par-extras
+  default-language: Haskell2010
+
+executable hw4-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_hw4
+  hs-source-dirs:
+      app
+  ghc-options: -eventlog -O2 -threaded -rtsopts -with-rtsopts=-N6
+  build-depends:
+      base >=4.7 && <5
+    , hw4
+  default-language: Haskell2010
+
+test-suite hw4-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_hw4
+      TestGeom
+      TestIntegrate
+      TestHashTable
+      TestFS
+  hs-source-dirs:
+      test
+  ghc-options: -eventlog -O2 -threaded -rtsopts -with-rtsopts=-N6
+  build-depends:
+      base >=4.7 && <5
+    , hw4
+    , threads
+    , tasty
+    , tasty-hunit
+    , microlens
+    , filepath
+    , directory
+  default-language: Haskell2010
+
+benchmark hw4-benchmark
+  build-depends:
+      base
+    , criterion
+    , hw4
+    , random
+    , threads
+  default-language: Haskell2010
+  ghc-options:      -eventlog -O2 -threaded -rtsopts -with-rtsopts=-N6
+  hs-source-dirs:   bench
+  main-is:          Main.hs
+  type:             exitcode-stdio-1.0
